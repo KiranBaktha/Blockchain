@@ -28,6 +28,8 @@ class CommunicatorServicer(full_node_pb2_grpc.CommunicatorServicer):
             addrMe = request.addrMe
             if addrMe not in peers:
                 peers.append(request.addrMe)
+            if len(peers)>=2:
+                print("Node {} is in mining state".format(node_ip))
             response = full_node_pb2.List()
             for peer in peers:
                 response.ip.append(peer)
