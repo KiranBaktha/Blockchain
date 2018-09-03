@@ -24,14 +24,14 @@ node_ip = socket.gethostbyname(socket.gethostname())  # The IP address of the no
 # full_node_pb2_grpc.CommunicatorServicer
 class CommunicatorServicer(full_node_pb2_grpc.CommunicatorServicer):
         def handshake(self, request, context):
-        	global peers
-        	addrMe = request.addrMe
-        	if addrMe not in peers:
-                	peers.append(request.addrMe)
-			response = full_node__pb2.List()
-        	for peer in peers:
-                	response.ip.append(peer)
-        	return response
+            global peers
+            addrMe = request.addrMe
+            if addrMe not in peers:
+                peers.append(request.addrMe)
+            response = full_node__pb2.List()
+            for peer in peers:
+                response.ip.append(peer)
+            return response
 
         def NewTransactionReceived(self, request, context):
                 global TxnMemoryPool
