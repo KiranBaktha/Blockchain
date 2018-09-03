@@ -2,7 +2,7 @@
 Coursework for Introduction to Blockchain class at UChicago Summer 2018.
 
 <p align="justify">
-A simple blockchain simulation involving 1 DNS seed and 3 Full Nodes. [gRPC](https://grpc.io/) is used to communicate with other nodes. Initially, each node registers itself with the DNS seed which then sends the previous registered full node as a response back. The first registering node gets a null response back from the DNS seed. When a full node receives a non-null response from the DNS seed, it handshakes with the node from the response. It then continutes handshaking with the response peer nodes from the first handshaked node and this process continutes until all the nodes are aware of it's peers. This procedure is illustrated with the following images with times steps T1 - T4
+A simple blockchain simulation involving 1 DNS seed and 3 Full Nodes. <a href='https://grpc.io/'>gRPC</a> is used to communicate with other nodes. Initially, each node registers itself with the DNS seed which then sends the previous registered full node as a response back. The first registering node gets a null response back from the DNS seed. When a full node receives a non-null response from the DNS seed, it handshakes with the node from the response. It then continutes handshaking with the response peer nodes from the first handshaked node and this process continutes until all the nodes are aware of it's peers. This procedure is illustrated with the following images with times steps T1 - T4
 </p>
 
 <img src="/static/T1.png" alt="T1" width="400" height="200"/>
