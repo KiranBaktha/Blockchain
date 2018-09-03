@@ -28,7 +28,7 @@ class CommunicatorServicer(full_node_pb2_grpc.CommunicatorServicer):
         	addrMe = request.addrMe
         	if addrMe not in peers:
                 	peers.append(request.addrMe)
-		response = full_node__pb2.List()
+			response = full_node__pb2.List()
         	for peer in peers:
                 	response.ip.append(peer)
         	return response
