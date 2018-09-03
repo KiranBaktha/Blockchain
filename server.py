@@ -91,8 +91,8 @@ server.start()
 print("Registering this node with the DNS Seed")
 
 channel = grpc.insecure_channel('172.17.0.2:50051')
-stub = calculator_pb2_grpc.CalculatorStub(channel)
-Registration = calculator_pb2.Registration(nVersion=1, nTime=round(time.time()), addrMe=node_ip) # Send the node's IP Address
+stub = full_node_pb2_grpc.CommunicatorStub(channel) # Get the dns_seed stub 
+Registration = full_node_pb2.Registration(nVersion=1, nTime=round(time.time()), addrMe=node_ip) # Send the node's IP Address
 response = stub.Registrar(Registration)
 
 if response.ip[0]!= '': # Not the first node to reach DNS Server
