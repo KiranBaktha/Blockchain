@@ -292,3 +292,14 @@ def mine():
                 if int(current_block.getBlockhash(),16) < int(target_hash,16):
                     Blockchain.append(current_block)
                     newBlockBroadcast(current_block) # Broadcast the block
+    except KeyboardInterrupt:
+        server.stop(0)
+        global generate_tx
+        generate_tx = False # Stop generating transactions
+        
+        
+if __name__=='__main__':
+    create_transactions()
+    mine()        
+        
+        
