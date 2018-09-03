@@ -21,21 +21,24 @@ Once each full node has 2 peers, it will then be able to mine. The full nodes cr
 # Source File Description
 
 1. dns_seed has the source code to behave as a dns seed.
-<ul>
-  <li>dns_seed.proto - proto3 file for dns seed</li>
-  <li>dns_seed_pb2 - generated message classes by grpc</li>
-  <li>dns_seed_pb2_grpc - generated server and client classes by grpc</li>
-  <li>server.py - dns seed server source code</li>
-</ul>
+
+  <ul>
+    <li>dns_seed.proto - proto3 file for dns seed</li>
+    <li>dns_seed_pb2 - generated message classes by grpc</li>
+    <li>dns_seed_pb2_grpc - generated server and client classes by grpc</li>
+    <li>server.py - dns seed server source code</li>
+  </ul>
+
 2. full_node has the source code to behave as a full node.
-<ul>
-  <li>blockchain.py - contains the class representation of blockchain components</li>
-  <li>full_node.proto - proto3 file for full node</li>
-  <li>full_node_pb2 - generated message classes by grpc</li>
-  <li>full_node_pb2_grpc - generated server and client classes by grpc</li>
-  <li>merkel_tree.py - merkel tree implementation</li>
-  <li>server.py - full node server source code</li>
-</ul>
+
+  <ul>
+    <li>blockchain.py - contains the class representation of blockchain components</li>
+    <li>full_node.proto - proto3 file for full node</li>
+    <li>full_node_pb2 - generated message classes by grpc</li>
+    <li>full_node_pb2_grpc - generated server and client classes by grpc</li>
+    <li>merkel_tree.py - merkel tree implementation</li>
+    <li>server.py - full node server source code</li>
+  </ul>
 
 
 # Running Instructions
