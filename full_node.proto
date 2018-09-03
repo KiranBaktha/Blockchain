@@ -1,0 +1,56 @@
+syntax = "proto3";
+
+message List{
+  repeated string ip=1;
+}
+
+message Registration{
+   int32 nVersion =1;
+   int32 nTime =2;
+   string addrMe = 3;
+}
+
+message Handshake{
+   int32 nVersion = 1;
+   int32 nTime = 2;
+   string addrMe = 3;
+   int32 bestHeight = 4;
+}
+
+message NewTransaction{
+    int32 VersionNumber = 1;
+    int32 incounter = 2;
+    int32 outcounter = 3;
+    repeated string list_of_inputs = 4;
+    repeated string list_of_outputs = 5;
+    string transaction_hash =  6;
+}
+
+message header{
+   int64 version = 1;
+   int64 nonce = 2;
+   string hash_prev_block = 3;
+   string hash_merkel_root = 4;
+   int64 timestamp = 5;
+   int64 bits = 6;
+}
+
+message NewBlock{
+    int64 MagicNumber = 1;
+    int64 BlockSize = 2;
+    header Blockheader = 3;
+    int64 transaction_counter = 4;
+    repeated NewTransaction transaction = 5;
+    string blockhash = 6;
+    int64 maxtxn = 7;
+}
+/* Simulates an empty return  */
+message Empty{}
+
+service Communicator {
+    rpc Registrar(Registration) returns (List) {}
+    rpc handshake(Handshake) returns (List) {}
+    rpc NewTransactionReceived(NewTransaction) returns (Empty) {}
+    rpc NewBlockReceived(NewBlock) returns (Empty) {}
+}
+
