@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+/*List is an array of IP Address that is used for the requesting full node to be aware of it's peers.*/
+message List{
+   repeated string ip = 1;
+}
+
+/* Registration is the message send by the Full Node to ask the DNS Seed to register ir.  */
+message Registration{
+   int32 nVersion =1;
+   int32 nTime =2;
+   string addrMe = 3;
+}
+
+/* Handshake message format */
+message Handshake{
+   int32 nVersion = 1;
+   int32 nTime = 2;
+   string addrMe = 3;
+   int32 bestHeight = 4;
+}
+
+service Communicator {
+    rpc Registrar(Registration) returns (List) {}
+    rpc handshake(Handshake) returns (List) {}
+}
+
