@@ -28,7 +28,7 @@ class CommunicatorServicer(full_node_pb2_grpc.CommunicatorServicer):
             addrMe = request.addrMe
             if addrMe not in peers:
                 peers.append(request.addrMe)
-            response = full_node__pb2.List()
+            response = full_node_pb2.List()
             for peer in peers:
                 response.ip.append(peer)
             return response
@@ -77,7 +77,7 @@ class CommunicatorServicer(full_node_pb2_grpc.CommunicatorServicer):
 # create a gRPC server
 server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))
 
-# use the generated function `add_CalculatorServicer_to_server`
+# use the generated function `add_CommunicatorServicer_to_server`
 # to add the defined class to the server
 full_node_pb2_grpc.add_CommunicatorServicer_to_server(
         CommunicatorServicer(), server)
@@ -104,7 +104,7 @@ if response.ip[0]!= '': # Not the first node to reach DNS Server
                 for new_ip in new_ips:
                         peers.append(new_ip)
                         channel2 = grpc.insecure_channel(new_ip + ':50051')
-                        stub2 = full_node_pb2_grpc.CalculatorStub(channel2)
+                        stub2 = full_node_pb2_grpc.CommunicatorStub(channel2)
                         Handshake = full_node_pb2.Handshake(nVersion=1, nTime=round(time.time()), addrMe=node_ip, bestHeight=0)
                         response2 = stub2.handshake(Handshake)
                         for received_ip in response2.ip:
